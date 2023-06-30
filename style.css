@@ -1,0 +1,5 @@
+#drawing-grid-container {
+  display: grid;
+  width: 350px;
+  height: 350px;
+}
