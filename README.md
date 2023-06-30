@@ -26,7 +26,6 @@ Grids need to initially start at 16x16. This can be done using Javascript, since
 ```
 parameters: number of rows (or columns, they'll be the same number)
 
-get the grid container
 update grid container styling based on rows
 
 for number of rows^2 (grid size - ex: 16x16)
