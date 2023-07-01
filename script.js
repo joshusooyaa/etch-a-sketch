@@ -95,7 +95,10 @@ function updateGridSizeDisplay() {
   window.addEventListener('mouseup', setMouseUp);
   gridSlider.addEventListener('input', updateGridSizeDisplay);
   gridSlider.addEventListener('change', updateDrawingArea);
-  colorPicker.addEventListener('change', updateColor);
+  
+  // Input instead of change because user can click off and draw and color  
+  // change doesn't implement immediately when this happens
+  colorPicker.addEventListener('input', updateColor);  
 
   addGrids();
 })();
