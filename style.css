@@ -1,6 +1,7 @@
 :root {
   --hex-base: #000000;
   --rainbow-color: var(--hex-base);
+  --text-color: #ffffff;
 }
 
 body {
@@ -148,9 +149,18 @@ input[type="color"]::-webkit-color-swatch {
   box-shadow: 1px 1px 3px var(--rainbow-color);
 }
 
+/* clear button */
+.clear {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
 
-/* rainbow */
-
-/* rainbow */
+.clear-button {
+  background-color: var(--hex-base);
+  color: var(--text-color);
+}
 
 /* USER SETTINGS */ 

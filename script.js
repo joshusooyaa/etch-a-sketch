@@ -115,6 +115,21 @@ function updateGridSizeDisplay() {
   function updateColor() {
     drawColor = this.value;
     document.documentElement.style.setProperty('--hex-base', drawColor);
+
+    // Convert from hex to rgb
+    const tempElement = document.createElement('div');
+    tempElement.style.backgroundColor = drawColor;
+    const backgroundColorRGB = tempElement.style.backgroundColor;
+
+    // ex: (120, 50, 20) --> [120, 50, 20]
+    const colorParts = backgroundColorRGB.match(/\d+/g).map(Number);
+    const [r, g, b] = colorParts;
+
+    // https://stackoverflow.com/questions/596216/formula-to-determine-perceived-brightness-of-rgb-color
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    const textColor = luminance > 0.5 ? 'black' : 'white';
+
+    document.documentElement.style.setProperty('--text-color', textColor);
   }
 
   function updateBackgroundColor() {
