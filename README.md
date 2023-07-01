@@ -74,5 +74,11 @@ To update the grid size, several things need to happen:
 2. Set up a listener for that slider element when it changes
 3. Call a function to update based on that change
 
+**Change Draw Color**\
+To change the draw color, several things need to happen:
+1. Create an input type="color", default value of black
+2. Create an event listener to update color value of drawing
+    * The reason we use this over getting the value every time when drawing is that this is much faster in that it doesn't need to make a function call and access the DOM node that contains the color value every time a user goes to draw.
+
 
 

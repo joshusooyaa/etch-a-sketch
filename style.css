@@ -14,7 +14,7 @@ body {
   border: 2px solid black;
 }
 
-.grid-size p {
+.grid-size p, .color-setting p {
   margin: 5px 0;
 }
 /* GRID SETTINGS */ 
@@ -25,17 +25,20 @@ body {
   display: flex;
   border: 2px solid black;
   width: 75%;
+  flex-wrap: wrap;
   
   /* Temporary */
   margin-top: 10px;
   margin-bottom: 5px;
 }
 
-#user-settings .grid-size {
+#user-settings .grid-size, .color-setting {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px;
+
+  flex: 1;
 }
 
 /* slider */

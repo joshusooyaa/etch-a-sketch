@@ -1,5 +1,6 @@
 /* Global Variables */
 let mouseDown = false;
+let drawColor = "black";
 /* End Global Variables */
 
 
@@ -41,8 +42,7 @@ function checkIfCanFill(e) {
 
 function fillInColor(e) {
   e.preventDefault(); // To prevent dragging
-  // TODO: Get fill color (dependent on user choice)
-  e.target.style.background = "black";
+  e.target.style.background = drawColor;
 }
 /* End Grid Fill */
 
@@ -62,11 +62,6 @@ function updateGridSizeDisplay() {
 
   gridSizeDisplay.textContent = `Grid Size: ${inputValue}x${inputValue}`
 }
-
-function updateDrawingArea() {
-  clearGrid();
-  addGrids(this.value);
-}
 /* End Update Grid Size*/
 
 /***************************/
@@ -76,7 +71,8 @@ function updateDrawingArea() {
 
 /* IIFE to add listeners and grid */
 (function() {
-  const gridSlider = document.querySelector(".grid-slider")
+  const gridSlider = document.querySelector(".grid-slider");
+  const colorPicker = document.querySelector(`.color-setting input[type="color"]`);
 
   function setMouseDown() {
     mouseDown = true;
@@ -86,10 +82,20 @@ function updateDrawingArea() {
     mouseDown = false;
   }
 
+  function updateDrawingArea() {
+    clearGrid();
+    addGrids(this.value);
+  }
+
+  function updateColor() {
+    drawColor = this.value;
+  }
+
   window.addEventListener('mousedown', setMouseDown);
   window.addEventListener('mouseup', setMouseUp);
   gridSlider.addEventListener('input', updateGridSizeDisplay);
   gridSlider.addEventListener('change', updateDrawingArea);
+  colorPicker.addEventListener('change', updateColor);
 
   addGrids();
 })();
