@@ -2,7 +2,12 @@
 let mouseDown = false;
 /* End Global Variables */
 
-/* Load Grid */
+
+/***********************/
+/**** Grid Settings ****/
+/***********************/
+
+/* Update Grid */
 function addGrids(numRows=16) {
   const gridContainer = document.querySelector('#drawing-grid-container');
   gridContainer.style.cssText = `grid-template-columns: repeat(${numRows}, 1fr);
@@ -20,7 +25,12 @@ function addGrids(numRows=16) {
 
   gridContainer.append(...gridElements);
 }
-/* End Load Grid */
+
+function clearGrid() {
+  const gridContainer = document.querySelector('#drawing-grid-container');
+  gridContainer.textContent = '';
+}
+/* End Update Grid*/
 
 /* Grid fill */
 function checkIfCanFill(e) {
@@ -34,10 +44,40 @@ function fillInColor(e) {
   // TODO: Get fill color (dependent on user choice)
   e.target.style.background = "black";
 }
+/* End Grid Fill */
+
+/***************************/
+/**** End Grid Settings ****/
+/***************************/
+
+
+/***********************/
+/**** User Settings ****/
+/***********************/
+
+/* Update Grid Size */
+function updateGridSizeDisplay() {
+  const gridSizeDisplay = this.previousElementSibling;
+  const inputValue = this.value;
+
+  gridSizeDisplay.textContent = `Grid Size: ${inputValue}x${inputValue}`
+}
+
+function updateDrawingArea() {
+  clearGrid();
+  addGrids(this.value);
+}
+/* End Update Grid Size*/
+
+/***************************/
+/**** End User Settings ****/
+/***************************/
 
 
 /* IIFE to add listeners and grid */
 (function() {
+  const gridSlider = document.querySelector(".grid-slider")
+
   function setMouseDown() {
     mouseDown = true;
   }
@@ -48,6 +88,8 @@ function fillInColor(e) {
 
   window.addEventListener('mousedown', setMouseDown);
   window.addEventListener('mouseup', setMouseUp);
+  gridSlider.addEventListener('input', updateGridSizeDisplay);
+  gridSlider.addEventListener('change', updateDrawingArea);
 
   addGrids();
 })();
