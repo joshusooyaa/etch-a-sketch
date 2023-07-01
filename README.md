@@ -14,7 +14,7 @@ This is a web app that contains a fixed drawing area which allows the user to dr
 2. Set up a container that will hold the grids (the drawing area)
 3. Dynamically add the initial 16x16 grids inside the container
 <br></br>
-## Algorithms
+## Features
 ### Dynamically Adding Grids
 ---
 **Overview**\
@@ -56,5 +56,25 @@ if mouse is down
 ```
 // Empty for now - dependent on setting up a color picker for user
 ```
+<br>
+
+### User Settings
+---
+**Overview**\
+There are several settings the user is allowed to manipulate to get different outcomes when drawing. These settings include: 
+1. Updating the number of grids (exponentially 1, 4, 9, 16) to a max of 4096 grids in the drawing area and a min of 1
+2. Changing the color of the drawing tool
+3. Rainbow grid coloring tool
+4. Clear the drawing area
+
+To update the drawing area size, it makes most sense too put this as a slider and have that display the the grid size to the user as they slide it back and forth. The slider will contain 64 ticks, allowing for up to a 64x64 grid area. Since `drawing-grid-container` is being updated -- a new function `deleteGrids` will need to be created to reset the container and then addGrids with the appropriate size.
+
+
+
+**Psuedocode for updateDrawingArea**
+```
+
+```
+
 
 

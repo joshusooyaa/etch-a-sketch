@@ -1,6 +1,35 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #drawing-grid-container {
   display: inline-grid;
   width: 350px;
   height: 350px;
   border: 2px solid black;
+}
+
+#user-settings {
+  display: flex;
+  border: 2px solid black;
+  width: 75%;
+  
+  /* Temporary */
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+#user-settings .grid-size {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.grid-size p {
+  margin: 5px 0;
 }
