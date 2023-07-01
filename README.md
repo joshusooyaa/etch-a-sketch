@@ -87,7 +87,7 @@ To change the draw color, several things need to happen:
 1. Set up an input checkbox
 2. When clicked, make it so draw mode is changed to erase
     * Note this requires updating fillInColor to account for if it is in draw mode or not.
-    * Requires setting up an event listener for input checkbox when filled -- set to erase, and when not set to draw
+    * Requires setting up an event listener for checkbox when clicked -- set to erase, and when not set to draw
 
 
 

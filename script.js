@@ -66,7 +66,7 @@ function updateGridSizeDisplay() {
 (function() {
   const gridSlider = document.querySelector(".grid-slider");
   const colorPicker = document.querySelector(`.color-setting input[type="color"]`);
-  const eraserDiv = document.querySelector(`.eraser input[type="checkbox"]`)
+  const eraserBox = document.querySelector(`.eraser .checkbox`)
   
   function setMouseDown() {
     mouseDown = true;
@@ -83,20 +83,48 @@ function updateGridSizeDisplay() {
 
   function updateColor() {
     drawColor = this.value;
+    document.documentElement.style.setProperty('--hex-base', drawColor);
   }
 
   function toggleEraser() {
     eraserMode = eraserMode ? false : true;
+    this.classList.toggle('active');
   }
+
+  function togglePressing(e) {
+    e.preventDefault();
+    
+    // Temporary deactive active styling when pressing on the button
+    if (e.target.classList.contains('active')) 
+      e.target.classList.toggle('active');
+    
+    e.target.classList.toggle('pressing');
+  }
+
+  function checkPressing(e) {
+    if (this.classList.contains('pressing')) togglePressing(e);
+
+    // Reactive active styling in the case it was removed when pressing
+    if (!e.target.classList.contains('active') && eraserMode)
+      e.target.classList.toggle('active');
+  }
+
+  
 
   window.addEventListener('mousedown', setMouseDown);
   window.addEventListener('mouseup', setMouseUp);
+  
   gridSlider.addEventListener('input', updateGridSizeDisplay);
   gridSlider.addEventListener('change', updateDrawingArea);
+  
   // Input instead of change because user can click off and draw and color  
   // change doesn't implement immediately when this happens
   colorPicker.addEventListener('input', updateColor);  
-  eraserDiv.addEventListener('change', toggleEraser);
+  
+  eraserBox.addEventListener('click', toggleEraser);
+  eraserBox.addEventListener('mousedown', togglePressing);
+  eraserBox.addEventListener('mouseup', checkPressing);
+  eraserBox.addEventListener('mouseout', checkPressing);
 
   addGrids();
 })();
