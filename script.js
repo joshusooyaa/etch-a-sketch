@@ -47,13 +47,19 @@ function checkIfCanFill(e) {
 function updateGridItem(e) {
   e.preventDefault(); // To prevent dragging
   if (eraserMode) {
-    e.target.style.backgroundColor = backgroundColor; 
+    e.target.style.backgroundColor = backgroundColor;
+    if (e.target.classList.contains('drawn'))
+      e.target.classList.toggle('drawn'); 
   }
   else if (rainbowMode) {
     e.target.style.backgroundColor = getRandomColor();
+    if (!e.target.classList.contains('drawn'))
+      e.target.classList.toggle('drawn');
   }
   else {
     e.target.style.background = drawColor;
+    if (!e.target.classList.contains('drawn'))
+      e.target.classList.toggle('drawn');
   }
 }
 
@@ -112,20 +118,11 @@ function updateGridSizeDisplay() {
   }
 
   function updateBackgroundColor() {
-    let oldBackground = backgroundColor;
     backgroundColor = this.value;
-    
-    // Get converted background to rgb, utilize conversion done by html
-    let tempElement = document.createElement('div');
-    tempElement.style.backgroundColor = oldBackground;
-    let oldBackgroundColorConverted = tempElement.style.backgroundColor;
-    console.log(oldBackgroundColorConverted);
 
     const gridItems = document.querySelectorAll('.grid-item');
     gridItems.forEach(item => {
-      let itemColor = item.style.backgroundColor;
-
-      if (itemColor === oldBackgroundColorConverted) {
+      if (!item.classList.contains('drawn')) {
         item.style.backgroundColor = backgroundColor;
       }
     });
