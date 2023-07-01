@@ -10,14 +10,22 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  background-color: #dddddd6e
+  background-color: #dfdfdfdc;
+  font-family: 'Dekko';
 }
 
 #title {
-  font-size: 32px;
   font-weight: 900;
-  margin: 10px;
+  align-self: center;
+  height: 7.5vh;
+  margin: 4.5vh 0 2.5vh;
+}
+
+#title h1 {
+  margin: 0;
+  font-size: 6.5vh;
+  color: var(--hex-base);
+  text-shadow: 1px 1px 1px #000000, -1px -1px 1px var(--hex-base);
 }
 
 #drawing-grid-container, #user-settings {
@@ -30,14 +38,19 @@ body {
 /* GRID SETTINGS */ 
 #drawing-grid-container {
   display: inline-grid;
-  width: 340px;
-  height: 340px;
+  width: 100%;
+  height: 100%;
 }
 
 .container-holder {
   display: flex;
   align-self: center;
+  align-items: center;
+  justify-content: center;
   margin: 0;
+  height: 95%;
+  min-height: 200px;
+  aspect-ratio: 1/1;
 }
 
 .grid-size p, .color-setting p, .eraser p, .rainbow-setting p, .draw-mode p,
@@ -45,6 +58,8 @@ body {
 {
   margin: 0 0 5px;
   text-align: center;
+
+  font-size: 1.5vw;
 }
 
 .checkbox {
@@ -52,55 +67,74 @@ body {
 }
 /* GRID SETTINGS */ 
 
-
-.middle {
-  display: flex;
+.content {
+  flex: 1 1 700px;
   width: 60%;
+  min-width: 700px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  margin: 10px 30px 30px;
 }
 
 .middle::after {
   content: '';
   flex-grow: 1;
-  margin-left: 10px;
-  margin-left: 15px;
+  align-self: center;
 }
 
 .left-container {
-  margin-right: 15px;
-}
-
-.middle .left-container {
   display: flex;
   flex: 1;
-  align-items: flex-start;
+  flex-grow: 1;
+  justify-content: center;
   align-self: center;
+}
+
+.middle {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  width: 75vw;
+  min-width: 500px;
+  margin: 10px 30px 30px;
 }
 
 .left-user-settings {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
+  align-self: center;
   justify-content: center;
-  border: 2px solid var(--hex-base);
+  border: .1vw solid var(--hex-base);
   box-shadow: 0 0 3px var(--hex-base);
   border-radius: 4px;
   background-color: white;
-  
+  height: 32vh;
+  max-width: 6.5vw;
+  min-height: 75px;
+  padding: .5em;
 }
 
 .bottom {
-  width: 60%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-width: 700px;
+  flex: 1;
 }
 
 .bottom-user-settings {
   display: flex;
-  flex-wrap: wrap;
   border: 2px solid var(--hex-base);
   box-shadow: 0 0 3px var(--hex-base);
   border-radius: 4px;
+  width: 50vw;
+  min-width: 400px;
+  min-height: 50px;
   background-color: white;
+  padding: .5em;
+  font-size: 1.5vw;
 }
 
 .grid-size, .color-setting, .eraser, .rainbow-setting, .draw-mode,
@@ -109,10 +143,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px;
 
   flex: 1;
 }
+
 
 /* slider */
 .grid-slider {
@@ -123,6 +157,8 @@ body {
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 0 3px var(--hex-base);
+  height: 2.5vh;
+  width: 10vw;
 }
 
 .grid-slider:hover {
@@ -136,6 +172,8 @@ body {
   height: 15px;
   background: var(--hex-base);
   cursor: pointer;
+  height: 2.5vh;
+  width: 2.5vh;
 }
 /* slider */
 
@@ -144,15 +182,15 @@ input[type="color"] {
   appearance: none;
   background: rgba(209, 209, 209, 0.932);
   text-align: center;
-  border: 1px solid rgba(0, 0, 0, 0.37);
-  border-radius: 20%;
+  border: .2vh solid rgba(0, 0, 0, 0.37);
   display: flex;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 6.5vh;
+  height: 6.5vh;
   padding: 0;
   transition: transform .2s;
   box-shadow: 1px 1px 3px var(--hex-base);
+  border-radius: 1vw;
 }
 
 input[type="color"]:hover {
@@ -161,11 +199,11 @@ input[type="color"]:hover {
 }
 
 input[type="color"]::-webkit-color-swatch-wrapper {
-  width: 90%;
+  width: 3vw;
 }
 input[type="color"]::-webkit-color-swatch {
-  border-radius: 50%;
-  border: 2px solid rgba(0, 0, 0, 0.5);
+  border-radius: 2vw;
+  border: .3vh solid rgba(0, 0, 0, 0.5);
 }
 /* color picker */
 
@@ -176,10 +214,13 @@ input[type="color"]::-webkit-color-swatch {
   width: 20px;
   background: var(--hex-base);
   opacity: .3;
-  border-radius: 5px;
-  border: 1px solid black;
+  border-radius: .3vw;
+  border: .01vw solid black;
   transition: transform .25s, background-color .25s;
   box-shadow: 1px 1px 3px var(--hex-base);
+
+  width: 2.5vh;
+  height: 2.5vh;
 }
 
 .checkbox:hover {
@@ -209,14 +250,13 @@ input[type="color"]::-webkit-color-swatch {
   align-items: center;
   text-align: center;
   flex: 1;
-  padding: 10px;
 }
 
 .clear-button {
   background-color: var(--hex-base);
   color: var(--text-color);
-  padding: 4px 15px;
-  border-radius: 4px;
+  padding: 1vh 2vw;
+  border-radius: .25vw;
   box-shadow: 1px 1px 3px var(--hex-base);
   transition: transform .2s ease;
   user-select: none;
@@ -238,16 +278,18 @@ input[type="color"]::-webkit-color-swatch {
   width: 100%;
   margin-top: 14px;
   max-height: 40px;
+  min-height: 7.5vh;
   flex-grow: 1;
   background-color: var(--hex-base);
   opacity: .8;
-  color: var(--text-color)
+  color: var(--text-color);
 }
 
 .footer p {
   display: flex;
-  font-size: 13px;
   align-items: center;
+  font-size: 2vh;
+  font-family: 'Abel'
 }
 
 .footer a {
@@ -257,13 +299,15 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 .footer img {
-  margin-left: 4px;
-  height: 12px;
+  margin-left: .25vw;
+  height: 2vh;
   fill: var(--text-color);
+  
+  transition: transform .65s;
   
 }
 
 .footer img:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
   cursor: pointer;
 }
