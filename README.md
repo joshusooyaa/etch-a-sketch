@@ -22,6 +22,8 @@ Grids need to initially start at 16x16. This can be done using Javascript, since
 
 `drawing-grid-container` is an ID since there will only be one place to draw. This is a unique area and shouldn't be a class. Its grid styling will be dynamically added by the JS since `grid-template-columns` this will allow for later implementation of letting the user change the size of the grid layout.
 
+Once the appropriate amount of grids have been created, they need to have listeners added to them. Since we're creating a drawing app, we ideally want to click and draw, however the click listener won't work because then we'd have to click on every grid to color (instead of dragging). Therefore, we can check for mouseover instead, and can add an event listener for mouse down elsewhere -- which will trigger a boolean we can check inside the callback function for this event listener.
+
 **PsuedoCode for `addGrids`**
 ```
 parameters: number of rows (or columns, they'll be the same number)
@@ -30,9 +32,29 @@ update grid container styling based on rows
 
 for number of rows^2 (grid size - ex: 16x16)
     create grid item
-    add appropriate styling
+    set up grid item to trigger a function when mouse hovers over
 
 add all grid items to grid container
+```
+<br>
+
+### Filling Grids In
+---
+**Overview**\
+This is a callback function on a `grid-item` when the event mouseover is triggered. However, we don't want the user to fill in the grid just on a mouseover, we also want to make sure that the mouse is currently down. Therefore, outside of fillInColor we can have an eventlistener for both mousedown and mouseup and have these modify a boolean, which then can be checked by fillInColor to know whether or not to fill in or return.
+
+In the case that the mouse is down, fillInColor needs to know what color to fill in with. A function will be called to get this color.
+
+**Psuedocode for `fillInColor`**
+```
+if mouse is down
+    get fill color -- default black
+    fill in the grid with the fill color
+```
+
+**Psuedocode for `getFillColor`**
+```
+// Empty for now - dependent on setting up a color picker for user
 ```
 
 
