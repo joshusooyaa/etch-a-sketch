@@ -48,9 +48,24 @@ function updateGridItem(e) {
   if (eraserMode) {
     e.target.style.backgroundColor = backgroundColor; 
   }
+  else if (rainbowMode) {
+    e.target.style.backgroundColor = getRandomColor();
+  }
   else {
     e.target.style.background = drawColor;
   }
+}
+
+function getRandomColor() {
+  const toChooseFrom = "0123456789ABCDEF"; // All hex possibilities
+  const maxOptions = toChooseFrom.length;
+  const maxHexCharacters = 6;
+  let color = "#";
+  for (let i = 0; i < maxHexCharacters; i++) {
+    let randomChoice = Math.floor(Math.random() * maxOptions);
+    color += toChooseFrom[randomChoice];
+  }
+  return color;
 }
 /* End Grid Fill */
 

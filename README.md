@@ -95,9 +95,15 @@ To change the draw color, several things need to happen:
 2. Link state of eraser, color, and rainbow to each other
     * We now have multiple ways to draw -- draw with color, draw with rainbow, or erase, so we need to make it so we can't have two or more "checked"
 3. Link to `updateGridItem` and have it now check the state it's in -- if it's in draw mode, draw that color, if it's in rainbow mode, call `getRandomColor` to get the random color.
+    * `getRandomColor` will return a HEX color code. Although to calculate this is slower, this is ideal since we have a style variable that we use (which uses HEX) to update colors in the UI based on the current color, and we'll update this variable to the random color as well.
 
 **Pseudocode for `getRandomColor`**
 ```
+for 6 iterations
+   get a random hex character (from 0-9 A-F)
+   append the random hex character to color
+
+return hex color
 
 ```
 
