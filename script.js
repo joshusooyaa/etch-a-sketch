@@ -1,6 +1,7 @@
 /* Global Variables */
 let mouseDown = false;
 let eraserMode = false;
+let isPressingEraser = false;
 let drawColor = "black";
 let backgroundColor = "white";
 /* End Global Variables */
@@ -74,6 +75,7 @@ function updateGridSizeDisplay() {
 
   function setMouseUp() {
     mouseDown = false;
+    isPressingEraser = false;
   }
 
   function updateDrawingArea() {
@@ -93,7 +95,6 @@ function updateGridSizeDisplay() {
 
   function togglePressing(e) {
     e.preventDefault();
-    
     // Temporary deactive active styling when pressing on the button
     if (e.target.classList.contains('active')) 
       e.target.classList.toggle('active');
@@ -102,14 +103,20 @@ function updateGridSizeDisplay() {
   }
 
   function checkPressing(e) {
+    if (e.type == "mouseover" && isPressingEraser) {
+      e.target.classList.toggle('pressing');
+      isPressingEraser = false;
+      return;
+    } 
     if (this.classList.contains('pressing')) togglePressing(e);
 
-    // Reactive active styling in the case it was removed when pressing
+    // Reactivate active styling in the case it was removed when pressing
     if (!e.target.classList.contains('active') && eraserMode)
       e.target.classList.toggle('active');
+    
+    if (e.type == "mouseout" && mouseDown) isPressingEraser = true;
+    if (e.type == "mouseup") isPressingEraser = false;
   }
-
-  
 
   window.addEventListener('mousedown', setMouseDown);
   window.addEventListener('mouseup', setMouseUp);
@@ -125,6 +132,7 @@ function updateGridSizeDisplay() {
   eraserBox.addEventListener('mousedown', togglePressing);
   eraserBox.addEventListener('mouseup', checkPressing);
   eraserBox.addEventListener('mouseout', checkPressing);
+  eraserBox.addEventListener('mouseover', checkPressing);
 
   addGrids();
 })();
