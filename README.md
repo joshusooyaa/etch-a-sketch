@@ -41,15 +41,17 @@ add all grid items to grid container
 ### Filling Grids In
 ---
 **Overview**\
-This is a callback function on a `grid-item` when the event mouseover is triggered. However, we don't want the user to fill in the grid just on a mouseover, we also want to make sure that the mouse is currently down. Therefore, outside of fillInColor we can have an eventlistener for both mousedown and mouseup and have these modify a boolean, which then can be checked by fillInColor to know whether or not to fill in or return.
+This is a callback function on a `grid-item` when the event mouseover is triggered. However, we don't want the user to fill in the grid just on a mouseover, we also want to make sure that the mouse is currently down. Therefore, outside of updateGridItem we can have an eventlistener for both mousedown and mouseup and have these modify a boolean, which then can be checked by updateGridItem to know whether or not to fill in or return.
 
-In the case that the mouse is down, fillInColor needs to know what color to fill in with. A function will be called to get this color.
+In the case that the mouse is down, updateGridItem needs to know what color to fill in with. A function will be called to get this color.
 
-**Psuedocode for `fillInColor`**
+**Psuedocode for `updateGridItem`**
 ```
 if mouse is down
     get fill color -- default black
-    fill in the grid with the fill color
+    if in draw mode (not erase)
+        fill in the grid with the fill color
+    otherwise reset grid (erase mode)
 ```
 
 **Psuedocode for `getFillColor`**
@@ -64,6 +66,7 @@ if mouse is down
 There are several settings the user is allowed to manipulate to get different outcomes when drawing. These settings include: 
 1. Updating the number of grids (exponentially 1, 4, 9, 16) to a max of 4096 grids in the drawing area and a min of 1
 2. Changing the color of the drawing tool
+3. Erase Mode
 3. Rainbow grid coloring tool
 4. Clear the drawing area
 
@@ -79,6 +82,12 @@ To change the draw color, several things need to happen:
 1. Create an input type="color", default value of black
 2. Create an event listener to update color value of drawing
     * The reason we use this over getting the value every time when drawing is that this is much faster in that it doesn't need to make a function call and access the DOM node that contains the color value every time a user goes to draw.
+
+**Eraser**
+1. Set up an input checkbox
+2. When clicked, make it so draw mode is changed to erase
+    * Note this requires updating fillInColor to account for if it is in draw mode or not.
+    * Requires setting up an event listener for input checkbox when filled -- set to erase, and when not set to draw
 
 
 
