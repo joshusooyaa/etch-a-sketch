@@ -10,6 +10,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #dddddd6e
 }
 
 #title {
@@ -32,30 +33,81 @@ body {
   height: 350px;
 }
 
+.container-holder {
+  display: flex;
+  align-self: center;
+  margin: 0;
+}
+
 .grid-size p, .color-setting p, .eraser p, .rainbow-setting p, .draw-mode p,
 .background-setting p
 {
-  margin: 5px 0;
+  margin: 0 0 5px;
+  text-align: center;
+}
+
+.checkbox {
+  margin: 0 0 2px;
 }
 /* GRID SETTINGS */ 
 
 
-/* USER SETTINGS */ 
-#user-settings {
+.middle {
   display: flex;
-  border: 2px solid var(--hex-base);
-  width: 75%;
-  flex-wrap: wrap;
-  
-  /* Temporary */
-  margin: 30px;
+  width: 60%;
+  align-items: center;
+  margin: 10px 30px 30px;
 }
 
-#user-settings .grid-size, .color-setting, .eraser, .rainbow-setting, .draw-mode,
+.middle::after {
+  content: '';
+  flex-grow: 1;
+  margin-left: 10px;
+  margin-left: 15px;
+}
+
+.left-container {
+  margin-right: 15px;
+}
+
+.middle .left-container {
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+  align-self: center;
+}
+
+.left-user-settings {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  border: 2px solid var(--hex-base);
+  box-shadow: 0 0 3px var(--hex-base);
+  border-radius: 4px;
+  background-color: white;
+  
+}
+
+.bottom {
+  width: 60%;
+}
+
+.bottom-user-settings {
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid var(--hex-base);
+  box-shadow: 0 0 3px var(--hex-base);
+  border-radius: 4px;
+  background-color: white;
+}
+
+.grid-size, .color-setting, .eraser, .rainbow-setting, .draw-mode,
 .background-setting {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 10px;
 
   flex: 1;
@@ -156,6 +208,7 @@ input[type="color"]::-webkit-color-swatch {
   align-items: center;
   text-align: center;
   flex: 1;
+  padding: 10px;
 }
 
 .clear-button {
@@ -176,5 +229,3 @@ input[type="color"]::-webkit-color-swatch {
 .clear-button:active {
   transform: scale(1.15);
 }
-
-/* USER SETTINGS */ 

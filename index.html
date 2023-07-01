@@ -9,35 +9,46 @@
 </head>
 <body>
   <div id="title">Etch-A-Sketch</div>
-  <div id="drawing-grid-container"></div>
-  <div id="user-settings">
-    <div class="grid-size">
-      <p>Grid Size: 16x16</p>
-      <input type="range" min="1" max="64" value="16" class="grid-slider">
+    <div class="middle">
+      <div class="left-container">
+        <div class="left-user-settings">
+          <div class="color-setting">
+            <p>Draw Color</p>
+            <input type="color">
+          </div>
+          <div class="background-setting">
+            <p>Background</p>
+            <input type="color">
+          </div>
+        </div>
+      </div>
+      <div class="container-holder">
+        <div id="drawing-grid-container"></div>
+      </div>
     </div>
-    <div class="color-setting">
-      <p>Draw Color</p>
-      <input type="color">
-    </div>
-    <div class="background-setting">
-      <p>Background</p>
-      <input type="color">
-    </div>
-    <div class="draw-mode">
-      <p>Draw Mode</p>
-      <div class="checkbox active"></div>
-    </div>
-    <div class="rainbow-setting">
-      <p>Rainbow Mode</p>
-      <div class="checkbox"></div>
-    </div>
-    <div class="eraser">
-      <p>Eraser</p>
-      <div class="checkbox"></div>
-    </div>
-    <div class="clear">
-      <div class="clear-button">
-        Clear
+    <div class="bottom">
+      <div class="bottom-user-settings">
+        <div class="grid-size">
+          <p>Grid Size: 16x16</p>
+          <input type="range" min="1" max="64" value="16" class="grid-slider">
+        </div>
+        <div class="draw-mode">
+          <p>Draw Mode</p>
+          <div class="checkbox active"></div>
+        </div>
+        <div class="rainbow-setting">
+          <p>Rainbow Mode</p>
+          <div class="checkbox"></div>
+        </div>
+        <div class="eraser">
+          <p>Eraser</p>
+          <div class="checkbox"></div>
+        </div>
+        <div class="clear">
+          <div class="clear-button">
+            Clear
+          </div>
+        </div>
       </div>
     </div>
   </div>
