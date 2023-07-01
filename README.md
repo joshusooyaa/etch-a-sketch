@@ -4,6 +4,18 @@ This is a project that is outlined by [The Odin Project](https://www.theodinproj
 # Description
 This is a web app that contains a fixed drawing area which allows the user to draw in. The drawing area is initially made up of 16x16 grids and can be increased to a max of 64x64 or decreased to a minimum of 1x1. Each grid inside the drawing area, when drawn on, will be filled with the current drawing color.
 
+The user has multiple options that allow them a varying "drawing experience". These options include:
+1. Change draw color
+2. Change background color
+    * Note that changing the background color does NOT reset anything that has been drawn
+3. Change the grid size (changes how many drawable grids there are)
+    * Note that this resets the drawing area!
+4. Change draw mode:
+    * Regular mode (draws what the current color is)
+    * Rainbow mode (randomly chooses an rgb color to draw)
+    * Eraser mode (sets the color back to the background color)
+5. Reset/clear grid
+
 <br>
 
 
