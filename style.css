@@ -30,7 +30,7 @@ body {
   height: 350px;
 }
 
-.grid-size p, .color-setting p, .eraser p{
+.grid-size p, .color-setting p, .eraser p, .rainbow-setting p, .draw-mode p{
   margin: 5px 0;
 }
 /* GRID SETTINGS */ 
@@ -47,7 +47,7 @@ body {
   margin: 30px;
 }
 
-#user-settings .grid-size, .color-setting, .eraser {
+#user-settings .grid-size, .color-setting, .eraser, .rainbow-setting, .draw-mode {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -109,16 +109,8 @@ input[type="color"]::-webkit-color-swatch {
 }
 /* color picker */
 
-/* eraser */
-.eraser input {
-  position: absolute;
-  margin: 0;
-  height: 0;
-  width: 0;
-  opacity: 0;
-}
-
-.eraser .checkbox {
+/* checkbox */
+.checkbox {
   display: block;
   height: 20px;
   width: 20px;
@@ -129,20 +121,24 @@ input[type="color"]::-webkit-color-swatch {
   transition: transform .25s, background-color .25s;
 }
 
-.eraser .checkbox:hover {
+.checkbox:hover {
   opacity: .4;
   cursor: pointer;
 }
 
-.eraser .checkbox.pressing {
+.checkbox.pressing {
   opacity: .6;
   transform: scale(1.1);
 }
 
-.eraser .checkbox.active {
+.checkbox.active {
   opacity: .8;
   transform: scale(1.2);
 }
-/* eraser */
+/* checkbox */
+
+/* rainbow */
+
+/* rainbow */
 
 /* USER SETTINGS */ 

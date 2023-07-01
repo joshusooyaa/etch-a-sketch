@@ -67,8 +67,9 @@ There are several settings the user is allowed to manipulate to get different ou
 1. Updating the number of grids (exponentially 1, 4, 9, 16) to a max of 4096 grids in the drawing area and a min of 1
 2. Changing the color of the drawing tool
 3. Erase Mode
-3. Rainbow grid coloring tool
-4. Clear the drawing area
+4. Rainbow grid coloring tool
+5. Change Background Color
+6. Clear the drawing area
 
 
 **Updating Grid Size**\
@@ -88,6 +89,18 @@ To change the draw color, several things need to happen:
 2. When clicked, make it so draw mode is changed to erase
     * Note this requires updating fillInColor to account for if it is in draw mode or not.
     * Requires setting up an event listener for checkbox when clicked -- set to erase, and when not set to draw
+
+**Rainbow Color**
+1. Set up an input checkbox (we can reuse the eraser styling for this)
+2. Link state of eraser, color, and rainbow to each other
+    * We now have multiple ways to draw -- draw with color, draw with rainbow, or erase, so we need to make it so we can't have two or more "checked"
+3. Link to `updateGridItem` and have it now check the state it's in -- if it's in draw mode, draw that color, if it's in rainbow mode, call `getRandomColor` to get the random color.
+
+**Pseudocode for `getRandomColor`**
+```
+
+```
+
 
 
 

@@ -1,9 +1,12 @@
 /* Global Variables */
 let mouseDown = false;
+let drawMode = true;
 let eraserMode = false;
-let isPressingEraser = false;
+let rainbowMode = false;
+let isPressing = false;
 let drawColor = "black";
 let backgroundColor = "white";
+
 /* End Global Variables */
 
 
@@ -67,7 +70,9 @@ function updateGridSizeDisplay() {
 (function() {
   const gridSlider = document.querySelector(".grid-slider");
   const colorPicker = document.querySelector(`.color-setting input[type="color"]`);
-  const eraserBox = document.querySelector(`.eraser .checkbox`)
+  const eraserBox = document.querySelector(`.eraser .checkbox`);
+  const rainbowBox = document.querySelector(`.rainbow-setting .checkbox`);
+  const drawBox = document.querySelector(`.draw-mode .checkbox`);
   
   function setMouseDown() {
     mouseDown = true;
@@ -75,7 +80,7 @@ function updateGridSizeDisplay() {
 
   function setMouseUp() {
     mouseDown = false;
-    isPressingEraser = false;
+    isPressing = false;
   }
 
   function updateDrawingArea() {
@@ -88,14 +93,77 @@ function updateGridSizeDisplay() {
     document.documentElement.style.setProperty('--hex-base', drawColor);
   }
 
-  function toggleEraser() {
-    eraserMode = eraserMode ? false : true;
-    this.classList.toggle('active');
+  function toggleMode() {
+    if (this.parentNode.classList.value == 'draw-mode') {
+      if (drawMode) {
+        return;
+      }
+      else {
+        drawMode = true;
+        
+        if (rainbowMode) {
+          rainbowMode = false;
+          rainbowBox.classList.toggle('active');
+        }
+        else {
+          eraserMode = false;
+          eraserBox.classList.toggle('active');
+        }
+      }
+    }
+    else if (this.parentNode.classList.value == 'rainbow-setting') {
+      if (rainbowMode) { // If deactivating, re-active drawMode
+        drawMode = true;
+        rainbowMode = false;
+        drawBox.classList.toggle('active');
+      }
+      else {
+        rainbowMode = true;
+
+        if (drawMode) {
+          drawMode = false;
+          drawBox.classList.toggle('active');
+        }
+        else {
+          eraserMode = false;
+          eraserBox.classList.toggle('active');
+        }
+      }
+      this.classList.toggle('active');
+    }
+    else {
+      if (eraserMode) { // If deactivating, re-active drawMode
+        drawMode = true;
+        eraserMode = false;
+        drawBox.classList.toggle('active');
+      }
+      else {
+        eraserMode = true;
+
+        if (drawMode) {
+          drawMode = false;
+          drawBox.classList.toggle('active');
+        }
+        else {
+          rainbowMode = false;
+          rainbowBox.classList.toggle('active');
+        }
+      }
+      this.classList.toggle('active');
+    }
+
+    console.log(rainbowBox.classList);
+    console.log(rainbowMode);
+    console.log(drawBox.classList);
+    console.log(drawMode);
+    console.log(eraserBox.classList);
+    console.log(eraserMode);
+
   }
 
   function togglePressing(e) {
     e.preventDefault();
-    // Temporary deactive active styling when pressing on the button
+    // Temporary deactivate active styling when pressing on the button
     if (e.target.classList.contains('active')) 
       e.target.classList.toggle('active');
     
@@ -103,19 +171,22 @@ function updateGridSizeDisplay() {
   }
 
   function checkPressing(e) {
-    if (e.type == "mouseover" && isPressingEraser) {
-      e.target.classList.toggle('pressing');
-      isPressingEraser = false;
+    if (e.type == "mouseover" && isPressing) {
+      isPressing = false;
+      togglePressing(e);
       return;
     } 
     if (this.classList.contains('pressing')) togglePressing(e);
 
     // Reactivate active styling in the case it was removed when pressing
-    if (!e.target.classList.contains('active') && eraserMode)
-      e.target.classList.toggle('active');
+    if (!e.target.classList.contains('active')) {
+      if (eraserMode && e.target == eraserBox) eraserBox.classList.toggle('active');
+      if (drawMode && e.target == drawBox) drawBox.classList.toggle('active');
+      if (rainbowMode && e.target == rainbowBox) rainbowBox.classList.toggle('active');
+    }
     
-    if (e.type == "mouseout" && mouseDown) isPressingEraser = true;
-    if (e.type == "mouseup") isPressingEraser = false;
+    if (e.type == "mouseout" && mouseDown) isPressing = true;
+    if (e.type == "mouseup") isPressing = false;
   }
 
   window.addEventListener('mousedown', setMouseDown);
@@ -128,11 +199,14 @@ function updateGridSizeDisplay() {
   // change doesn't implement immediately when this happens
   colorPicker.addEventListener('input', updateColor);  
   
-  eraserBox.addEventListener('click', toggleEraser);
-  eraserBox.addEventListener('mousedown', togglePressing);
-  eraserBox.addEventListener('mouseup', checkPressing);
-  eraserBox.addEventListener('mouseout', checkPressing);
-  eraserBox.addEventListener('mouseover', checkPressing);
+  // Add box click event listeners
+  [eraserBox, rainbowBox, drawBox].forEach(element => {
+    element.addEventListener('click', toggleMode);
+    element.addEventListener('mousedown', togglePressing);
+    ['mouseup', 'mouseout', 'mouseover'].forEach(event => {
+      element.addEventListener(event, checkPressing);
+    })
+  })
 
   addGrids();
 })();
