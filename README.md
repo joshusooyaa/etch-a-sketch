@@ -68,23 +68,11 @@ There are several settings the user is allowed to manipulate to get different ou
 4. Clear the drawing area
 
 
-*Updating Grid Size*\
+**Updating Grid Size**\
 To update the grid size, several things need to happen:
 1. Slider element (input with range) that gets the users desired size
 2. Set up a listener for that slider element when it changes
 3. Call a function to update based on that change
-
-**Psuedocode for callback function used when slider changed**
-```
-get the value of the slider
-call updateDrawingArea
-```
-**Psuedocode for `updateDrawingArea`**
-```
-update p displaying grid size
-delete all grids from drawing-grid-container
-add x grids to drawing-grid-container
-```
 
 
 

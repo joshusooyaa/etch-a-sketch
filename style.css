@@ -6,6 +6,7 @@ body {
   align-items: center;
 }
 
+/* GRID SETTINGS */ 
 #drawing-grid-container {
   display: inline-grid;
   width: 350px;
@@ -13,6 +14,13 @@ body {
   border: 2px solid black;
 }
 
+.grid-size p {
+  margin: 5px 0;
+}
+/* GRID SETTINGS */ 
+
+
+/* USER SETTINGS */ 
 #user-settings {
   display: flex;
   border: 2px solid black;
@@ -30,6 +38,26 @@ body {
   padding: 10px;
 }
 
-.grid-size p {
-  margin: 5px 0;
+/* slider */
+.grid-slider {
+  appearance: none;
+  background: rgb(209, 209, 209);
+  opacity: 0.7;
+  transition: opacity .2s;
+  border-radius: 5px;
+  overflow: hidden;
 }
+
+.grid-slider:hover {
+  opacity: .85;
+}
+
+.grid-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #3e04aa;
+  cursor: pointer;
+}
+/* slider */
+/* USER SETTINGS */ 
