@@ -97,7 +97,8 @@ function updateGridSizeDisplay() {
   const eraserBox = document.querySelector(`.eraser .checkbox`);
   const rainbowBox = document.querySelector(`.rainbow-setting .checkbox`);
   const drawBox = document.querySelector(`.draw-mode .checkbox`);
-  
+  const clearGridButton = document.querySelector(`.clear .clear-button`);
+
   function setMouseDown() {
     mouseDown = true;
   }
@@ -202,14 +203,6 @@ function updateGridSizeDisplay() {
       }
       this.classList.toggle('active');
     }
-
-    console.log(rainbowBox.classList);
-    console.log(rainbowMode);
-    console.log(drawBox.classList);
-    console.log(drawMode);
-    console.log(eraserBox.classList);
-    console.log(eraserMode);
-
   }
 
   function togglePressing(e) {
@@ -240,6 +233,16 @@ function updateGridSizeDisplay() {
     if (e.type == "mouseup") isPressing = false;
   }
 
+  function resetGrid() {
+    const gridContainer = document.querySelector('#drawing-grid-container');
+    gridContainer.childNodes.forEach(grid => {
+      if (grid.classList.contains('drawn')) {
+        grid.classList.toggle('drawn');
+        grid.style.backgroundColor = backgroundColor;
+      }
+    })
+  }
+
   window.addEventListener('mousedown', setMouseDown);
   window.addEventListener('mouseup', setMouseUp);
   
@@ -259,6 +262,8 @@ function updateGridSizeDisplay() {
       element.addEventListener(event, checkPressing);
     })
   })
+
+  clearGridButton.addEventListener('click', resetGrid);
 
   addGrids();
 })();

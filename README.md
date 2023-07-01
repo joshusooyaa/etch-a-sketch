@@ -113,6 +113,12 @@ For background color, we have two options. We can either make it so it resets th
 3. Create an event listener that checks when user updates background color
     * On change, check for all grid-items that are the exact same color and change them to the new background color. 
 
+**Clear Drawing**\
+This is fairly straight forward with everything already set up. We have `clearGrid` as an option, but we also have 'drawn' classes indicating what divs have been drawn in and what haven't. And since clear doesn't need to add or remove grids, it doesn't make sense to use this. So instead we'll create a new function to call that will check for all drawn grids, and set their color to the background color.
+1. Create button with event listener on click
+2. Call `resetGrid` which contains the above explained functionality.
+
+
 
 
 
