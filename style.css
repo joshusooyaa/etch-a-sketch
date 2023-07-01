@@ -161,6 +161,20 @@ input[type="color"]::-webkit-color-swatch {
 .clear-button {
   background-color: var(--hex-base);
   color: var(--text-color);
+  padding: 4px 15px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 3px var(--hex-base);
+  transition: transform .2s ease;
+  user-select: none;
+}
+
+.clear-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.clear-button:active {
+  transform: scale(1.15);
 }
 
 /* USER SETTINGS */ 

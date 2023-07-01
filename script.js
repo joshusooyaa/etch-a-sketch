@@ -233,7 +233,7 @@ function updateGridSizeDisplay() {
     if (e.type == "mouseup") isPressing = false;
   }
 
-  function resetGrid() {
+  function resetGrid(e) {
     const gridContainer = document.querySelector('#drawing-grid-container');
     gridContainer.childNodes.forEach(grid => {
       if (grid.classList.contains('drawn')) {
