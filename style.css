@@ -247,12 +247,20 @@ input[type="color"]::-webkit-color-swatch {
 .footer p {
   display: flex;
   font-size: 13px;
+  align-items: center;
 }
+
+.footer a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .footer img {
   margin-left: 4px;
   height: 12px;
   fill: var(--text-color);
-  align-self: center;
+  
 }
 
 .footer img:hover {
