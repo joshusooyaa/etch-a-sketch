@@ -16,12 +16,18 @@ body {
   margin: 10px;
 }
 
+#drawing-grid-container, #user-settings {
+  border: 2px solid var(--hex-base);
+  box-shadow: 0 0 12px var(--hex-base);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
 /* GRID SETTINGS */ 
 #drawing-grid-container {
   display: inline-grid;
   width: 350px;
   height: 350px;
-  border: 2px solid var(--hex-base);
 }
 
 .grid-size p, .color-setting p, .eraser p{
@@ -33,12 +39,12 @@ body {
 /* USER SETTINGS */ 
 #user-settings {
   display: flex;
-  border: 2px solid black;
+  border: 2px solid var(--hex-base);
   width: 75%;
   flex-wrap: wrap;
   
   /* Temporary */
-  margin: 10px;
+  margin: 30px;
 }
 
 #user-settings .grid-size, .color-setting, .eraser {
@@ -137,9 +143,6 @@ input[type="color"]::-webkit-color-swatch {
   opacity: .8;
   transform: scale(1.2);
 }
-
-
-
 /* eraser */
 
 /* USER SETTINGS */ 
