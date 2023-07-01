@@ -65,6 +65,7 @@ function getRandomColor() {
     let randomChoice = Math.floor(Math.random() * maxOptions);
     color += toChooseFrom[randomChoice];
   }
+  document.documentElement.style.setProperty('--rainbow-color', color);
   return color;
 }
 /* End Grid Fill */
@@ -115,6 +116,7 @@ function updateGridSizeDisplay() {
       }
       else {
         drawMode = true;
+        drawBox.classList.toggle('active');
         
         if (rainbowMode) {
           rainbowMode = false;
