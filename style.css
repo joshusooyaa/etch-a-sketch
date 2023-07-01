@@ -31,7 +31,9 @@ body {
   height: 350px;
 }
 
-.grid-size p, .color-setting p, .eraser p, .rainbow-setting p, .draw-mode p{
+.grid-size p, .color-setting p, .eraser p, .rainbow-setting p, .draw-mode p,
+.background-setting p
+{
   margin: 5px 0;
 }
 /* GRID SETTINGS */ 
@@ -48,7 +50,8 @@ body {
   margin: 30px;
 }
 
-#user-settings .grid-size, .color-setting, .eraser, .rainbow-setting, .draw-mode {
+#user-settings .grid-size, .color-setting, .eraser, .rainbow-setting, .draw-mode,
+.background-setting {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,6 +98,7 @@ input[type="color"] {
   height: 40px;
   padding: 0;
   transition: transform .2s;
+  box-shadow: 1px 1px 3px var(--hex-base);
 }
 
 input[type="color"]:hover {

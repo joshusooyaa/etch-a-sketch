@@ -23,6 +23,7 @@ function addGrids(numRows=16) {
     newGridElement.setAttribute('class', 'grid-item');
     newGridElement.addEventListener('mousedown', updateGridItem);
     newGridElement.addEventListener('mouseover', checkIfCanFill);
+    newGridElement.style.backgroundColor = backgroundColor;
     gridElements.push(newGridElement);
   }
 
@@ -86,6 +87,7 @@ function updateGridSizeDisplay() {
 (function() {
   const gridSlider = document.querySelector(".grid-slider");
   const colorPicker = document.querySelector(`.color-setting input[type="color"]`);
+  const backgroundColorPicker = document.querySelector(`.background-setting input[type="color"]`)
   const eraserBox = document.querySelector(`.eraser .checkbox`);
   const rainbowBox = document.querySelector(`.rainbow-setting .checkbox`);
   const drawBox = document.querySelector(`.draw-mode .checkbox`);
@@ -107,6 +109,26 @@ function updateGridSizeDisplay() {
   function updateColor() {
     drawColor = this.value;
     document.documentElement.style.setProperty('--hex-base', drawColor);
+  }
+
+  function updateBackgroundColor() {
+    let oldBackground = backgroundColor;
+    backgroundColor = this.value;
+    
+    // Get converted background to rgb, utilize conversion done by html
+    let tempElement = document.createElement('div');
+    tempElement.style.backgroundColor = oldBackground;
+    let oldBackgroundColorConverted = tempElement.style.backgroundColor;
+    console.log(oldBackgroundColorConverted);
+
+    const gridItems = document.querySelectorAll('.grid-item');
+    gridItems.forEach(item => {
+      let itemColor = item.style.backgroundColor;
+
+      if (itemColor === oldBackgroundColorConverted) {
+        item.style.backgroundColor = backgroundColor;
+      }
+    });
   }
 
   function toggleMode() {
@@ -214,7 +236,8 @@ function updateGridSizeDisplay() {
   
   // Input instead of change because user can click off and draw and color  
   // change doesn't implement immediately when this happens
-  colorPicker.addEventListener('input', updateColor);  
+  colorPicker.addEventListener('input', updateColor); 
+  backgroundColorPicker.addEventListener('change', updateBackgroundColor); 
   
   // Add box click event listeners
   [eraserBox, rainbowBox, drawBox].forEach(element => {

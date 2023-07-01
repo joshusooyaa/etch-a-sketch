@@ -104,8 +104,14 @@ for 6 iterations
    append the random hex character to color
 
 return hex color
-
 ```
+
+**Background Color**\
+For background color, we have two options. We can either make it so it resets the page, or we can make it so it only changes the grid-items that have the initial background color. The second option is harder, so we go for that.
+1. Create a div `background-color`
+2. It can take the same format of the `color-setting` div
+3. Create an event listener that checks when user updates background color
+    * On change, check for all grid-items that are the exact same color and change them to the new background color. 
 
 
 
