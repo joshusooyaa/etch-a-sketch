@@ -17,7 +17,7 @@ The user has multiple options that allow them a varying "drawing experience". Th
 5. Reset/clear grid
 
 **Note Before Using:**\
-There is an issue on some browseres with a large grid size. Since the solution I chose uses css variables (which I was new to using and didn't realize how this would affect things at the time), the style recalculation causes a large amount of lag the larger the grid size. Fixing this would require a fair amount of rewriting in the css and javascript and isn't very beneficial to me to go back and fix since I'd like to spend my time on new projects. That says, it does run fine in Firefox.
+There is an issue on some browsers with a large grid size. Since the solution I chose uses css variables (which I was new to using and didn't realize how this would affect things at the time), the style recalculation causes a large amount of lag the larger the grid size. Fixing this would require a fair amount of rewriting in the css and javascript and isn't very beneficial to me to go back and fix since I'd like to spend my time on new projects. That says, it does run fine in Firefox.
 
 <br>
 
