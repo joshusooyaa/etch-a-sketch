@@ -2,7 +2,7 @@
 This is a project that is outlined by [The Odin Project](https://www.theodinproject.com/about). The assignment guidelines can be found [here](https://www.theodinproject.com/lessons/foundations-etch-a-sketch).
 
 # Description
-This is a web app that contains a fixed drawing area which allows the user to draw in. The drawing area is initially made up of 16x16 grids and can be increased to a max of 64x64 or decreased to a minimum of 1x1. Each grid inside the drawing area, when drawn on, will be filled with the current drawing color.
+This is a web app that contains a fixed drawing area which allows the user to draw in. The drawing area is initially made up of 16x16 grids and can be increased to a max of 64x64 or decreased to a minimum of 1x1. Each grid inside the drawing area, when drawn on, will be filled with the current drawing color. 
 
 The user has multiple options that allow them a varying "drawing experience". These options include:
 1. Change draw color
@@ -15,6 +15,9 @@ The user has multiple options that allow them a varying "drawing experience". Th
     * Rainbow mode (randomly chooses an rgb color to draw)
     * Eraser mode (sets the color back to the background color)
 5. Reset/clear grid
+
+**Note Before Using:**\
+There is an issue on some browseres with a large grid size. Since the solution I chose uses css variables (which I was new to using and didn't realize how this would affect things at the time), the style recalculation causes a large amount of lag the larger the grid size. Fixing this would require a fair amount of rewriting in the css and javascript and isn't very beneficial to me to go back and fix since I'd like to spend my time on new projects. That says, it does run fine in Firefox.
 
 <br>
 
